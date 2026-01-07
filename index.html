@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご依頼内容作成ツール</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>ご依頼内容作成ツール</h1>
+    <form id="orderForm">
+        
+        <div class="form-group">
+            <label for="type" class="required">① ご依頼の種類</label>
+            <select id="type" required>
+                <option value="" disabled selected>選択してください</option>
+                <option value="全身立ち絵">全身立ち絵</option>
+                <option value="バストアップ">バストアップ</option>
+                <option value="キャラクターデザイン">キャラクターデザイン</option>
+                <option value="太もも～膝くらいまでのバストアップ">太もも～膝くらいまでのバストアップ</option>
+                <option value="背景込み一枚絵">背景込み一枚絵</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="charCount" class="required">② キャラクターの人数</label>
+            <input type="number" id="charCount" min="1" placeholder="例: 1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="illusCount" class="required">③ イラストの枚数</label>
+            <input type="number" id="illusCount" min="1" placeholder="例: 1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="usage" class="required">④ 使用用途</label>
+            <select id="usage" required>
+                <option value="" disabled selected>選択してください</option>
+                <option value="個人利用">個人利用</option>
+                <option value="商用利用（権利譲渡希望）">商用利用（権利譲渡希望）</option>
+                <option value="商用利用（権利譲渡なし）">商用利用（権利譲渡なし）</option>
+                <option value="歌ってみた・MV利用">歌ってみた・MV利用</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budget" class="required">⑤ 予算 (円)</label>
+            <input type="number" id="budget" placeholder="例: 55000" step="1000" required>
+        </div>
+
+        <div class="form-group">
+            <label for="deadline" class="required">⑥ 希望納期</label>
+            <input type="date" id="deadline" required>
+        </div>
+
+        <div class="form-group">
+            <label for="clientName" class="required">⑦ お名前 (HN可)</label>
+            <input type="text" id="clientName" placeholder="山田 太郎" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="required">⑧ 連絡の取れるメールアドレスまたはSNSのアカウントID</label>
+            <input type="email" id="email" placeholder="sample@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="charRef">⑨ キャラクターデザイン資料 (URL)</label>
+            <input type="url" id="charRef" placeholder="参考画像のURL(ファイル転送サービスのURL)">
+        </div>
+
+        <div class="form-group">
+            <label for="imageRef">⑩ 仕上がりイメージの参考 (URL)</label>
+            <input type="url" id="imageRef" placeholder="参考画像のURL(ファイル転送サービスのURL)">
+        </div>
+
+        <div class="form-group">
+            <label for="other">⑪ その他・詳細な発注内容</label>
+            <textarea id="other" placeholder="ポーズの指定、表情、キャンバスサイズの指定など、詳細があればご記入ください。"></textarea>
+        </div>
+
+        <div class="btn-area">
+            <button type="button" onclick="generateText()">テキストを作成する</button>
+        </div>
+    </form>
+
+    <div id="output-area">
+        <label>以下のテキストをコピーして送信してください</label>
+        <textarea id="resultText" class="result-box" rows="15" readonly></textarea>
+        <div class="btn-area" style="margin-top: 10px;">
+            <button type="button" class="copy-btn" onclick="copyToClipboard()">コピーする</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
